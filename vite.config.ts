@@ -7,11 +7,22 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
+// 因為Vite 本身附帶Typescript 類型，所以你可以通過IDE 和jsdoc 的配合來實現智能提示：
+// 另外你可以使用 defineConfig 工具函數，這樣不用jsdoc 註解也可以獲取類型提示：
+export default defineConfig(({ mode }) => {
+  console.log(mode)
+  const result = {
+    plugins: [vue()],
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src')
+      }
+    },
+    server: {
+      port: 6999,
+      open: true
+    // proxy
     }
   }
+  return result
 })
