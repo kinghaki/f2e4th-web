@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-    "module": "esnext",
+    "module": "esnext", // esnext 等於 es6
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
@@ -11,8 +11,13 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [], // 陣列是空的，代表 node_module的@type全部都會導入
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"] // 因為在vite設置了@，那如果在typescript裡相对位置需要配置baseUrl才能识别，否则会报错
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/.env.dev.d.ts", "types/env.prod.d.ts", "types/env.dev.d.ts", "types/*.d.ts"], //指定編譯需要編譯的文件或目錄
   "references": [{ "path": "./tsconfig.node.json" }]
 }
