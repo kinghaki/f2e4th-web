@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
 
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/views/f2eHome/F2eHome.vue')
+  },
+
   // {
   //   path: '/event/:id',
   //   name: 'EventDetail',
@@ -16,10 +22,10 @@ const routes: Array<RouteRecordRaw> = [
   //   name: 'FoodDetail',
   //   component: () => import('@/views/AppFoodDetail.vue')
   // },
-  // {
-  //   path: '/:pathMatch(.*)*', // router4，萬用字元寫法
-  //   redirect: '/home'
-  // }
+  {
+    path: '/:pathMatch(.*)*', // router4，萬用字元寫法
+    redirect: '/home'
+  }
 
 ];
 
