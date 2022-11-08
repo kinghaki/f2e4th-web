@@ -27,6 +27,13 @@ export default ({ mode }) => {
       open: true, // 自動打開瀏覽器
       hmr: true // 當頁面更改會自動刷新，預設為true
     // proxy
+    },
+
+    // 解決導入 gsap的問題
+    build: {
+      commonjsOptions: {
+        esmExternals: true
+      }
     }
   });
 };

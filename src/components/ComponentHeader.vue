@@ -24,52 +24,53 @@ export default defineComponent({
 
 <style scoped lang='scss'>
 #component-header {
-  width: 100vw;
-  height: 62px;
+  align-items: center;
   background: #38241b;
   display: flex;
+  height: 62px;
   justify-content: space-between;
-  align-items: center;
   padding: 0 24px;
   position: fixed;
+  width: 100vw;
+  z-index: 999;
 
   .header-logo {
-    width: 145px;
-    height: 35px;
     cursor: pointer;
+    height: 35px;
+    width: 145px;
   }
 
   .nav-bar {
-    width: 322px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+    width: 322px;
 
     .stage {
-      width: 72px;
+      background-color: #38241b;
+      font-size: 18px;
       height: 26px;
       line-height: 26px;
-      font-size: 18px;
-      background-color: #38241b;
+      width: 72px;
     }
 
     .caption {
-      width: 72px;
+      background-color: #38241b;
+      font-size: 18px;
       height: 26px;
       line-height: 26px;
-      font-size: 18px;
-      background-color: #38241b;
+      width: 72px;
     }
 
     .apply {
-      width: 130px;
-      height: 42px;
-      font-size: 20px;
       background-color: #951205;
-      color: #fff;
       border-radius: 40px;
+      color: #fff;
       cursor: pointer;
+      font-size: 20px;
+      height: 42px;
+      width: 130px;
     }
   }
 }

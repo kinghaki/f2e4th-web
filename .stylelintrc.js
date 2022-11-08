@@ -4,6 +4,9 @@ module.exports = {
         'stylelint-config-recommended-vue',
         'stylelint-config-standard'
     ],
+    plugins:[
+        "stylelint-order"
+    ],
     rules: {
         'indentation': 2,
         'selector-pseudo-element-no-unknown': [
@@ -19,7 +22,8 @@ module.exports = {
         'at-rule-no-unknown': null,
         'no-duplicate-selectors': null,
         'no-empty-source':null,
-        'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }]
+        'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
+        "order/properties-alphabetical-order": true //style按照字母順序排列
     },
     customSyntax: 'postcss-html',
     overrides: [

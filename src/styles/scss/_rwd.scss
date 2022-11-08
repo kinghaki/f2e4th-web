@@ -1,32 +1,32 @@
-$pc-media: 1440px;
-$pcs-media: 1439px;
+$pc-media: 1280px;
+$pcs-media: 1179px;
 $pad-media: 768px;
 $pads-media: 767px;
 $phone-media: 375px;
 $phones-media: 374px;
 
 @mixin rwd($service) {
-    @if $service==pc {
-        @media screen and (min-width: $pc-media) {
-            @content;
-        }
+  @if $service == pc {
+    @media screen and (min-width: $pc-media) {
+      @content;
     }
+  }
 
-    @else if $service==padpc {
-        @media screen and (min-width: $pad-media) and (max-width: $pcs-media) {
-            @content;
-        }
+  @else if $service == padpc {
+    @media screen and (min-width: $pad-media) and (max-width: $pcs-media) {
+      @content;
     }
+  }
 
-    @else if $service==pad {
-        @media screen and (max-width: $pads-media) {
-            @content;
-        }
+  @else if $service == pad {
+    @media screen and (max-width: $pads-media) {
+      @content;
     }
+  }
 
-    @else if $service==phone {
-        @media screen and (max-width: $phone-media) {
-            @content;
-        }
+  @else if $service == phone {
+    @media screen and (max-width: $phone-media) {
+      @content;
     }
+  }
 }
