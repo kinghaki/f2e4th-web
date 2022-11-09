@@ -4,16 +4,16 @@
       各界大神直播分享
     </h2>
     <div class="people">
-      <img src="@/assets/left-top.gif" alt="">
-      <img src="@/assets/right-top.gif" alt="">
-      <img src="@/assets/left-bottom.gif" alt="">
-      <img src="@/assets/right-bottom.gif" alt="">
+      <img ref="leftTop" src="@/assets/left-top.gif" alt="">
+      <img ref="rightTop" src="@/assets/right-top.gif" alt="">
+      <img ref="leftBottom" src="@/assets/left-bottom.gif" alt="">
+      <img ref="rightBottom" src="@/assets/right-bottom.gif" alt="">
     </div>
   </div>
 </template>
 
 <script lang='ts'>
-import { CSSProperties, defineComponent, ref } from 'vue';
+import { CSSProperties, defineComponent, onMounted, ref } from 'vue';
 import bgGroup from '@/assets/ComponentMain/main-bg.png';
 export default defineComponent({
   name: 'ComponentPeople'
@@ -29,6 +29,37 @@ const bGComponentMain = ref<CSSProperties>({
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'bottom',
   objectFit: 'cover'
+});
+const leftTop = ref<HTMLElement | null>(null);
+const rightTop = ref<HTMLElement | null>(null);
+const leftBottom = ref<HTMLElement | null>(null);
+const rightBottom = ref<HTMLElement | null>(null);
+onMounted(() => {
+  window.addEventListener('scroll', (e) => {
+    if (leftTop.value?.offsetTop) {
+      if (window.scrollY >= leftTop.value?.offsetTop - 400) {
+        leftTop.value.className = 'animation-left-top';
+      }
+    }
+
+    if (rightTop.value?.offsetTop) {
+      if (window.scrollY >= rightTop.value?.offsetTop - 400) {
+        rightTop.value.className = 'animation-right-top';
+      }
+    }
+
+    if (leftBottom.value?.offsetTop) {
+      if (window.scrollY >= leftBottom.value?.offsetTop - 400) {
+        leftBottom.value.className = 'animation-left-bottom';
+      }
+    }
+
+    if (rightBottom.value?.offsetTop) {
+      if (window.scrollY >= rightBottom.value?.offsetTop - 400) {
+        rightBottom.value.className = 'animation-right-bottom';
+      }
+    }
+  });
 });
 </script>
 <style scoped lang='scss'>
@@ -51,6 +82,8 @@ const bGComponentMain = ref<CSSProperties>({
     justify-content: space-around;
     margin: 64px auto 0;
     padding-bottom: 64px;
+
+    /* visibility: hidden; */
     width: 1064px;
   }
 }

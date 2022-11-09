@@ -6,7 +6,7 @@
     </p>
     <div class="line"></div>
     <div class="line"></div>
-    <div class="contents parallax">
+    <div ref="parallax" class="contents parallax">
       <div class="title">
         <h2 class="text">
           視差滾動  Parallax Scrolling
@@ -31,7 +31,8 @@
         </div>
       </div>
     </div>
-    <div class="contents canvas">
+
+    <div ref="canvas" class="contents canvas">
       <div class="title">
         <h2 class="text">
           線上簽署 Canvas
@@ -56,7 +57,8 @@
         </div>
       </div>
     </div>
-    <div class="contents draggable">
+
+    <div ref="draggable" class="contents draggable">
       <div class="title">
         <h2 class="text">
           Scrum  JS draggable
@@ -81,6 +83,7 @@
         </div>
       </div>
     </div>
+
     <h2 class="race-time">
       賽程時間
     </h2>
@@ -118,14 +121,14 @@
       </div>
     </div>
     <div class="record">
-      <div class="record-first race">
+      <div class="record-first">
         <span>初選</span>
         <span class="rectangle"></span>
         <p>
           12/05(五)
         </p>
       </div>
-      <div class="record-last race">
+      <div class="record-last">
         <span>決選</span>
         <span class="rectangle"></span>
         <p>
@@ -133,26 +136,30 @@
         </p>
       </div>
     </div>
-    <section>
-      初選：將由六角學院前端、UI 評審進行第一波篩選，並於 12/5（五）公布初選佳作名單
-      。
-      決選：由三大企業針對該企業主題進行入圍獎最後篩選，並於 12/23（五）公布企業得獎名單。
+    <section class="sections">
+      <p class="first">
+        初選：將由六角學院前端、UI 評審進行第一波篩選，並於 12/5（五）公布初選佳作名單
+        。
+      </p>
+      <p class="second">
+        決選：由三大企業針對該企業主題進行入圍獎最後篩選，並於 12/23（五）公布企業得獎名單。
+      </p>
     </section>
     <h2 class="prize">
       獎項
     </h2>
     <div class="medals">
-      <div class="bronze-medal medal">
+      <div ref="bronze" class="bronze-medal medal">
         <img src="@/assets/ComponentMain/bronze.png" alt="">
         <span class="title">每個關卡各1組</span>
       </div>
-      <div class="gold-medal medal">
+      <div ref="gold" class="gold-medal medal">
         <img src="@/assets/ComponentMain/gold.png" alt="">
         <span class="title">
           每個關卡各 2 名，設計 1 名、前端 1 名
         </span>
       </div>
-      <div class="sliver-medal medal">
+      <div ref="sliver" class="sliver-medal medal">
         <img src="@/assets/ComponentMain/sliver.png" alt="">
         <span class="title">
           每個關卡個人組十位
@@ -164,10 +171,12 @@
       以上皆提供完賽數位獎狀
     </div>
     <div
+      v-if="isAccident"
       class="accident"
+      @click="closeAccident"
     >
       <span class="good">意想不到的好康</span>
-      <div class="click-magic">
+      <div class="click-magic" @click="emit('live-share', true)">
         <div class="click">
           請點擊
         </div>
@@ -191,6 +200,11 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+const emit = defineEmits(['live-share']);
+const isAccident = ref(true);
+const closeAccident = () => {
+  isAccident.value = false;
+};
 
 const bGComponentMain = ref<CSSProperties>({
   backgroundSize: 'cover',
@@ -201,7 +215,12 @@ const bGComponentMain = ref<CSSProperties>({
   objectFit: 'cover'
 });
 const container = ref<HTMLElement | null>(null);
-
+const parallax = ref<HTMLElement | null>(null);
+const canvas = ref<HTMLElement | null>(null);
+const draggable = ref<HTMLElement | null>(null);
+const bronze = ref<HTMLElement | null>(null);
+const gold = ref<HTMLElement | null>(null);
+const sliver = ref<HTMLElement | null>(null);
 onMounted(() => {
   lottie.loadAnimation({
     container: container.value as HTMLElement,
@@ -209,6 +228,45 @@ onMounted(() => {
     loop: true,
     autoplay: true,
     animationData: click
+  });
+  window.addEventListener('scroll', (e) => {
+    console.log(window.scrollY);
+    console.log(parallax.value?.offsetTop);
+    if (parallax.value?.offsetTop) {
+      if (window.scrollY >= parallax.value?.offsetTop - 400) {
+        parallax.value.className = ' contents parallax animation-parallax';
+      }
+    }
+
+    if (canvas.value?.offsetTop) {
+      if (window.scrollY >= canvas.value?.offsetTop - 400) {
+        canvas.value.className = ' contents parallax animation-canvas';
+      }
+    }
+
+    if (draggable.value?.offsetTop) {
+      if (window.scrollY >= draggable.value?.offsetTop - 400) {
+        draggable.value.className = 'contents parallax animation-draggable';
+      }
+    }
+
+    if (bronze.value?.offsetTop) {
+      if (window.scrollY >= bronze.value?.offsetTop - 400) {
+        bronze.value.className = 'bronze-medal medal animation-bronze';
+      }
+    }
+
+    if (gold.value?.offsetTop) {
+      if (window.scrollY >= gold.value?.offsetTop - 400) {
+        gold.value.className = 'gold-medal medal animation-gold';
+      }
+    }
+
+    if (sliver.value?.offsetTop) {
+      if (window.scrollY >= sliver.value?.offsetTop - 400) {
+        sliver.value.className = 'sliver-medal medal animation-sliver';
+      }
+    }
   });
 //   gsap.to('.parallax', {
 //     x: 600,
@@ -228,6 +286,8 @@ onMounted(() => {
 </script>
 
 <style scoped lang='scss'>
+@import url("@/styles/scss/animation.scss");
+
 .active {
   display: block;
 }
@@ -271,11 +331,11 @@ onMounted(() => {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    display: hidden;
     font-size: 70px;
     height: 528px;
     margin-top: 99px;
     padding: 19px 40px 0;
+    visibility: hidden;
     width: 1200px;
 
     .title {
@@ -358,6 +418,7 @@ onMounted(() => {
   .race-detail {
     display: flex;
     justify-content: space-around;
+    margin-top: 92px;
 
     .begin-signup {
       /* background-color: darkblue; */
@@ -381,18 +442,24 @@ onMounted(() => {
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
 
-    .rectangle {
-      background-color: #3c221b;
-      height: 48.53px;
-      width: 48.53px;
-    }
+      .title {
+        color: #38241b;
+        font-size: 30px;
+        font-weight: 400;
+      }
 
-    .title {
-      color: #38241b;
-      font-size: 30px;
-      font-weight: 400;
+      .rectangle {
+        background-color: #3c221b;
+        height: 48.53px;
+        margin-top: 20px;
+        transform: rotate(45deg);
+        width: 48.53px;
+      }
+
+      p {
+        margin-top: 32.27px;
+      }
     }
   }
 
@@ -401,12 +468,28 @@ onMounted(() => {
     margin-top: 92px;
 
     .record-first {
+      display: flex;
+      flex-direction: column;
       width: 103px;
     }
 
     .record-last {
+      display: flex;
+      flex-direction: column;
       width: 103px;
     }
+
+    .rectangle {
+      background-color: #3c221b;
+      height: 48.53px;
+      margin-top: 20px;
+      transform: rotate(45deg);
+      width: 48.53px;
+    }
+  }
+
+  .sections {
+    margin-top: 44px;
   }
 
   .prize {
@@ -425,6 +508,7 @@ onMounted(() => {
   .medals {
     display: flex;
     justify-content: space-evenly;
+    visibility: hidden;
     width: 386px;
 
     .medal {

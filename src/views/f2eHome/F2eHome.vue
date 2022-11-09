@@ -1,8 +1,8 @@
 <template>
   <div id="f2e-home" ref="home" :style="bGHome">
-    <div ref="container" class="magic"></div>
+    <!-- <div ref="container" class="magic"></div> -->
     <div ref="paper" class="paper">
-      <img
+      <!-- <img
         ref="paperTop" src="@/assets/home/paper-top.png" alt=""
         class="top"
       >
@@ -13,10 +13,11 @@
       <img
         ref="paperRight" src="@/assets/home/paper-right.png" alt=""
         class="right"
-      >
-      <div ref="scrollDownElement" class="scroll-down">
+      > -->
+
+      <!-- <div ref="scrollDownElement" class="scroll-down">
         .
-      </div>
+      </div> -->
     </div>
     <ComponentHeader></ComponentHeader>
     <div class="home-main" :style="bgMainHome">
@@ -65,8 +66,11 @@
         </ul>
       </div>
     </div>
-    <ComponentMain></ComponentMain>
-    <ComponentPeople></ComponentPeople>
+    <ComponentMain @live-share="trigger"></ComponentMain>
+    <template v-if="isPeople">
+      <ComponentPeople></ComponentPeople>
+    </template>
+
     <componentFotter></componentFotter>
   </div>
 </template>
@@ -117,16 +121,22 @@ const bgPeople = ref<CSSProperties>({
   objectFit: 'cover'
 });
 
+const isPeople = ref(false);
+const trigger = (flag = false) => {
+  isPeople.value = flag;
+};
+
 const paperTop = ref<HTMLElement | null>(null);
 const paper = ref<HTMLElement | null>(null);
 const scrollDownElement = ref<HTMLElement | null>(null);
 const home = ref<HTMLElement | null>(null);
 const container = ref<HTMLElement | null>(null);
 const mouseMove = (e: MouseEvent) => {
-  console.log(e.clientX);
-  console.log(container.value?.style.left);
-  console.log(container.value?.offsetWidth);
-  console.log(e.pageX);
+  // console.log(e.clientX);
+  // console.log(container.value?.style.left);
+  // console.log(container.value?.offsetWidth);
+  // console.log(e.pageX);
+
   if (container.value) {
     container.value.style.left = `${e.clientX - container.value.offsetWidth + 90}px`;
     container.value.style.top = `${e.clientY - container.value.offsetHeight + 120}px`;

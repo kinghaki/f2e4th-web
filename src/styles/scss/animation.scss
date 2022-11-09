@@ -1,0 +1,221 @@
+@keyframes parallax {
+  0% {
+    transform: translate(-100%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-parallax {
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: parallax;
+}
+
+@keyframes canvas {
+  0% {
+    transform: translate(100%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-canvas {
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: canvas;
+}
+
+@keyframes draggable {
+  0% {
+    transform: translate(-100%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-draggable {
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: parallax;
+}
+
+@keyframes bronze {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-bronze {
+  animation-delay: .5s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: bronze;
+}
+
+@keyframes gold {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-gold {
+  animation-delay: .8s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: gold;
+}
+
+@keyframes sliver {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-sliver {
+  animation-delay: 1s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: sliver;
+}
+
+@keyframes lefttop {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-left-top {
+  animation-delay: 1s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: lefttop;
+}
+
+@keyframes righttop {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-right-top {
+  animation-delay: 1s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: righttop;
+}
+
+@keyframes leftbottom {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: visible;
+  }
+}
+
+.animation-left-bottom {
+  animation-delay: 1s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: leftbottom;
+}
+
+@keyframes rightbottom {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
+
+.animation-right-bottom {
+  animation-delay: 1s;
+
+  /* 持续时间 */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: rightbottom;
+}

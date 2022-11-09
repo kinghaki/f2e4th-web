@@ -31,6 +31,7 @@ export default defineComponent({
 #component-fotter {
   .companys {
     align-items: center;
+    background: #fff;
     display: flex;
     height: 96px;
     justify-content: space-evenly;
