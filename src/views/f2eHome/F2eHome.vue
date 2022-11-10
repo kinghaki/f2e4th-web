@@ -1,6 +1,11 @@
 <template>
   <div id="f2e-home" ref="home" :style="bGHome">
     <!-- <div ref="container" class="magic"></div> -->
+    <img
+      ref="container" src="@/assets/cursor.svg" alt=""
+      class="magic"
+    >
+    <img src="@/assets/star.svg" alt="" class="star">
     <div ref="paper" class="paper">
       <!-- <img
         ref="paperTop" src="@/assets/home/paper-top.png" alt=""
@@ -123,10 +128,13 @@ const bgPeople = ref<CSSProperties>({
 
 const isPeople = ref(false);
 const trigger = (flag = false) => {
+  console.log(123);
   isPeople.value = flag;
 };
 
 const paperTop = ref<HTMLElement | null>(null);
+const paperLeft = ref<HTMLElement | null>(null);
+const paperRight = ref<HTMLElement | null>(null);
 const paper = ref<HTMLElement | null>(null);
 const scrollDownElement = ref<HTMLElement | null>(null);
 const home = ref<HTMLElement | null>(null);
@@ -138,8 +146,8 @@ const mouseMove = (e: MouseEvent) => {
   // console.log(e.pageX);
 
   if (container.value) {
-    container.value.style.left = `${e.clientX - container.value.offsetWidth + 90}px`;
-    container.value.style.top = `${e.clientY - container.value.offsetHeight + 120}px`;
+    container.value.style.left = `${e.clientX - container.value.offsetWidth + 45}px`;
+    container.value.style.top = `${e.clientY - container.value.offsetHeight + 45}px`;
   }
 };
 onMounted(() => {
@@ -155,6 +163,27 @@ onMounted(() => {
     animationData: click
   });
   window.addEventListener('mousemove', mouseMove, true);
+  window.addEventListener('scroll', () => {
+    if (paperTop.value) {
+      console.log(paperTop.value.style.top.replace('px', ''));
+      console.log(window.scrollY);
+      const top = Number(paperTop.value.style.top.replace('px', ''));
+      const movePx = top + window.scrollY;
+      console.log('topmovepx', movePx);
+      paperTop.value.style.top = `${-movePx}px`;
+    }
+    if (paperLeft.value) {
+      console.log(paperLeft.value.style.top);
+      const bottom = Number(paperLeft.value.style.bottom.replace('px', ''));
+      const movePx = bottom + window.scrollY;
+      paperLeft.value.style.top = `${movePx}px`;
+    }
+    if (paperRight.value) {
+      const bottom = Number(paperRight.value.style.bottom.replace('px', ''));
+      const movePx = bottom + window.scrollY;
+      paperRight.value.style.top = `${movePx}px`;
+    }
+  }, true);
 
   // paper.value?.offsetLeft
   lottie.loadAnimation({
@@ -178,9 +207,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang='scss'>
+/* stylelint-disable-next-line import-notation */
+@import "@/styles/scss/rwd";
+
 #f2e-home {
   /* height: 720px; */  // 報紙變模糊了
   position: relative;
+
+  /* position: fixed; */
   width: 100vw;
 
   .magic {
@@ -189,7 +223,14 @@ onUnmounted(() => {
     top: 0;
 
     /* width: 300px; */
-    z-index: 10;
+    z-index: 1;
+  }
+
+  .star {
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 1;
   }
 
   .paper {
@@ -214,7 +255,7 @@ onUnmounted(() => {
     }
 
     .right {
-      bottom: -600px;
+      bottom: -400px;
       height: 1008px;
       right: -300px;
       width: 1218px;
@@ -243,6 +284,12 @@ onUnmounted(() => {
     top: 101px;
     width: 1213px;
 
+    @include rwd(padpc) {
+      display: block;
+      height: 736px;
+      width: 740px;
+    }
+
     .main-left {
       padding-left: 56px;
       padding-top: 51px;
@@ -252,6 +299,12 @@ onUnmounted(() => {
         display: flex;
         justify-content: space-between;
 
+        @include rwd(padpc) {
+          display: flex;
+          justify-content: center;
+          width: 359px;
+        }
+
         .big-title {
           color: #38241b;
           font-size: 80px;
@@ -259,6 +312,12 @@ onUnmounted(() => {
           height: 104px;
           line-height: 104px;
           width: 335px;
+
+          @include rwd(padpc) {
+            font-size: 60px;
+            height: 104px;
+            width: 320px;
+          }
         }
 
         .little-title {
@@ -281,6 +340,11 @@ onUnmounted(() => {
         height: 180px;
         margin-top: 22px;
         width: 343px;
+
+        @include rwd(padpc) {
+          height: 104px;
+          width: 570px;
+        }
       }
 
       .content2 {
@@ -290,6 +354,10 @@ onUnmounted(() => {
         height: 140px;
         line-height: 35px;
         width: 289px;
+
+        @include rwd(padpc) {
+          display: none;
+        }
       }
     }
 
@@ -304,6 +372,18 @@ onUnmounted(() => {
       right: 0;
       top: 0;
       width: 100%;
+
+      @include rwd(padpc) {
+        bottom: 0;
+        display: flex;
+        height: 462px;
+        left: 60px;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 260px;
+        width: 600px;
+      }
     }
 
     .main-right {
@@ -312,9 +392,19 @@ onUnmounted(() => {
       .bounty-img {
         /* height: 121px; */
         width: 352px;
+
+        @include rwd(padpc) {
+          position: absolute;
+          right: -30px;
+          top: -30px;
+        }
       }
 
       .people {
+        @include rwd(padpc) {
+          display: none;
+        }
+
         li {
           align-items: center;
           display: flex;

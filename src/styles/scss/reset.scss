@@ -111,6 +111,7 @@ section {
 }
 
 body {
+  cursor: none; // 讓滑鼠不見
   line-height: 1;
 }
 
@@ -168,7 +169,6 @@ input:focus {
 input,
 textarea {
   box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 /* These elements are usually rendered a certain way by the browser */
@@ -179,7 +179,6 @@ input[type="submit"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-  box-sizing: border-box;
   box-sizing: border-box;
 }
 

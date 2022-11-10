@@ -28,6 +28,9 @@ export default defineComponent({
 </script>
 
 <style scoped lang='scss'>
+/* stylelint-disable-next-line import-notation */
+@import "@/styles/scss/rwd";
+
 #component-fotter {
   .companys {
     align-items: center;
@@ -35,6 +38,15 @@ export default defineComponent({
     display: flex;
     height: 96px;
     justify-content: space-evenly;
+
+    @include rwd(padpc) {
+      align-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      height: 150px;
+
+      /* justify-content: center; */
+    }
   }
 
   h4 {

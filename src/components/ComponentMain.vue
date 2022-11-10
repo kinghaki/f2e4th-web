@@ -88,6 +88,7 @@
       賽程時間
     </h2>
     <div class="race-detail">
+      <div class="line"></div>
       <div class="begin-signup race">
         <span class="title">開始報名</span>
         <span class="rectangle"></span>
@@ -232,39 +233,52 @@ onMounted(() => {
   window.addEventListener('scroll', (e) => {
     console.log(window.scrollY);
     console.log(parallax.value?.offsetTop);
+    console.log(parallax.value?.offsetHeight);
     if (parallax.value?.offsetTop) {
-      if (window.scrollY >= parallax.value?.offsetTop - 400) {
+      if (window.scrollY >= parallax.value?.offsetTop - parallax.value.offsetHeight * 2) {
         parallax.value.className = ' contents parallax animation-parallax';
+      } else {
+        parallax.value.className = ' contents parallax';
       }
     }
 
     if (canvas.value?.offsetTop) {
-      if (window.scrollY >= canvas.value?.offsetTop - 400) {
+      if (window.scrollY >= canvas.value?.offsetTop - canvas.value.offsetHeight * 2) {
         canvas.value.className = ' contents parallax animation-canvas';
+      } else {
+        canvas.value.className = ' contents parallax';
       }
     }
 
     if (draggable.value?.offsetTop) {
-      if (window.scrollY >= draggable.value?.offsetTop - 400) {
+      if (window.scrollY >= draggable.value?.offsetTop - draggable.value.offsetHeight * 2) {
         draggable.value.className = 'contents parallax animation-draggable';
+      } else {
+        draggable.value.className = ' contents parallax';
       }
     }
 
     if (bronze.value?.offsetTop) {
-      if (window.scrollY >= bronze.value?.offsetTop - 400) {
+      if (window.scrollY >= bronze.value?.offsetTop - bronze.value.offsetHeight * 2) {
         bronze.value.className = 'bronze-medal medal animation-bronze';
+      } else {
+        bronze.value.className = 'bronze-medal medal';
       }
     }
 
     if (gold.value?.offsetTop) {
-      if (window.scrollY >= gold.value?.offsetTop - 400) {
+      if (window.scrollY >= gold.value?.offsetTop - gold.value.offsetHeight * 2) {
         gold.value.className = 'gold-medal medal animation-gold';
+      } else {
+        gold.value.className = 'gold-medal medal';
       }
     }
 
     if (sliver.value?.offsetTop) {
-      if (window.scrollY >= sliver.value?.offsetTop - 400) {
+      if (window.scrollY >= sliver.value?.offsetTop - sliver.value?.offsetHeight * 2) {
         sliver.value.className = 'sliver-medal medal animation-sliver';
+      } else {
+        sliver.value.className = 'sliver-medal medal';
       }
     }
   });
@@ -287,6 +301,8 @@ onMounted(() => {
 
 <style scoped lang='scss'>
 @import url("@/styles/scss/animation.scss");
+/* stylelint-disable-next-line import-notation */
+@import "@/styles/scss/rwd";
 
 .active {
   display: block;
@@ -300,10 +316,21 @@ onMounted(() => {
   margin-top: 115px;
   padding-top: 100px;
 
+  @include rwd(padpc) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .img-group {
     height: 146.83px;
     text-align: center;
     width: 590px;
+
+    @include rwd(padpc) {
+      height: 98px;
+      width: 315px;
+    }
   }
 
   .content {
@@ -324,6 +351,10 @@ onMounted(() => {
     height: 0;
     margin-top: 2px;
     width: 1200px;
+
+    @include rwd(padpc) {
+      display: none;
+    }
   }
 
   .contents {
@@ -337,6 +368,16 @@ onMounted(() => {
     padding: 19px 40px 0;
     visibility: hidden;
     width: 1200px;
+
+    @include rwd(padpc) {
+      width: 700px;
+    }
+
+    img {
+      @include rwd(padpc) {
+        display: none;
+      }
+    }
 
     .title {
       display: flex;
@@ -363,6 +404,11 @@ onMounted(() => {
         line-height: 63px;
         width: 592px;
 
+        @include rwd(padpc) {
+          display: flex;
+          justify-content: center;
+        }
+
         h3 {
           font-family: "Noto Serif TC";
           font-size: 44px;
@@ -379,6 +425,13 @@ onMounted(() => {
           letter-spacing: 0;
           line-height: 35px;
           width: 592px;
+        }
+
+        .buttons {
+          @include rwd(padpc) {
+            margin-top: 89.36px;
+            text-align: center;
+          }
         }
 
         .btn-stage {
@@ -419,6 +472,13 @@ onMounted(() => {
     display: flex;
     justify-content: space-around;
     margin-top: 92px;
+
+    .line {
+      border: 5px solid #3c221b;
+      bottom: 30px;
+      left: 300px;
+      position: absolute;
+    }
 
     .begin-signup {
       /* background-color: darkblue; */
@@ -510,6 +570,10 @@ onMounted(() => {
     justify-content: space-evenly;
     visibility: hidden;
     width: 386px;
+
+    @include rwd(padpc) {
+      display: block;
+    }
 
     .medal {
       align-items: center;

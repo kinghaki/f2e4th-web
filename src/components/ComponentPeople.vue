@@ -4,10 +4,35 @@
       各界大神直播分享
     </h2>
     <div class="people">
-      <img ref="leftTop" src="@/assets/left-top.gif" alt="">
-      <img ref="rightTop" src="@/assets/right-top.gif" alt="">
-      <img ref="leftBottom" src="@/assets/left-bottom.gif" alt="">
-      <img ref="rightBottom" src="@/assets/right-bottom.gif" alt="">
+      <div class="first">
+        <p>網站的動態趨勢</p>
+        <img
+          ref="leftTop" src="@/assets/left-top.gif" alt=""
+          class="hidden"
+        >
+      </div>
+      <div class="second">
+        <p>jQuery 也可以做到的互動效果</p>
+        <img
+          ref="rightTop" src="@/assets/right-top.gif" alt=""
+          class="hidden"
+        >
+      </div>
+
+      <div class="thrid">
+        <p>網頁可以拖拖拉拉draggable.js 介紹</p>
+        <img
+          ref="leftBottom" src="@/assets/left-bottom.gif" alt=""
+          class="hidden"
+        >
+      </div>
+      <div class="fourth">
+        <p>互動式網頁設計工程師該具備哪些技能？</p>
+        <img
+          ref="rightBottom" src="@/assets/right-bottom.gif" alt=""
+          class="hidden"
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -36,39 +61,54 @@ const leftBottom = ref<HTMLElement | null>(null);
 const rightBottom = ref<HTMLElement | null>(null);
 onMounted(() => {
   window.addEventListener('scroll', (e) => {
+    console.log(leftTop.value?.offsetTop);
+    console.log(window.scrollY);
+    console.log(leftTop.value?.offsetHeight);
     if (leftTop.value?.offsetTop) {
-      if (window.scrollY >= leftTop.value?.offsetTop - 400) {
+      if (window.scrollY >= leftTop.value?.offsetTop - leftTop.value.offsetHeight * 2) {
         leftTop.value.className = 'animation-left-top';
+      } else {
+        leftTop.value.className = 'hidden';
       }
     }
 
     if (rightTop.value?.offsetTop) {
-      if (window.scrollY >= rightTop.value?.offsetTop - 400) {
+      if (window.scrollY >= rightTop.value?.offsetTop - rightTop.value.offsetHeight * 2) {
         rightTop.value.className = 'animation-right-top';
+      } else {
+        rightTop.value.className = '';
       }
     }
 
     if (leftBottom.value?.offsetTop) {
-      if (window.scrollY >= leftBottom.value?.offsetTop - 400) {
+      if (window.scrollY >= leftBottom.value?.offsetTop - leftBottom.value.offsetHeight * 2) {
         leftBottom.value.className = 'animation-left-bottom';
+      } else {
+        leftBottom.value.className = '';
       }
     }
 
     if (rightBottom.value?.offsetTop) {
-      if (window.scrollY >= rightBottom.value?.offsetTop - 400) {
+      if (window.scrollY >= rightBottom.value?.offsetTop - rightBottom.value.offsetHeight * 2) {
         rightBottom.value.className = 'animation-right-bottom';
+      } else {
+        rightBottom.value.className = '';
       }
     }
   });
 });
 </script>
 <style scoped lang='scss'>
+/* stylelint-disable-next-line import-notation */
+@import "@/styles/scss/rwd";
+
 #component-people {
   color: #fff;
   font-family: "Noto Serif TC";
   font-size: 60px;
   font-weight: 900;
   line-height: 170px;
+  padding-top: 30px;
   text-align: center;
   width: 100vw;
 
@@ -77,6 +117,8 @@ onMounted(() => {
   }
 
   .people {
+    align-content: center;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -84,7 +126,52 @@ onMounted(() => {
     padding-bottom: 64px;
 
     /* visibility: hidden; */
-    width: 1064px;
+
+    /* width: 1064px; */
+
+    @include rwd(padpc) {
+      display: flex;
+      width: 768px;
+    }
+
+    .first {
+      width: 522px;
+
+      @include rwd(padpc) {
+        /* width: 343px; */
+      }
+    }
+
+    .second {
+      width: 522px;
+
+      @include rwd(padpc) {
+        /* width: 103px; */
+      }
+    }
+
+    .thrid {
+      width: 522px;
+
+      @include rwd(padpc) {
+        /* width: 343px; */
+      }
+    }
+
+    .fourth {
+      width: 522px;
+
+      @include rwd(padpc) {
+        /* width: 343px; */
+      }
+    }
+
+    p {
+      color: #000;
+      height: 117px;
+
+      /* width: 402px; */
+    }
   }
 }
 </style>

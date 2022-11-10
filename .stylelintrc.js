@@ -23,7 +23,7 @@ module.exports = {
         'no-duplicate-selectors': null,
         'no-empty-source':null,
         'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
-        "order/properties-alphabetical-order": true //style按照字母順序排列
+        "order/properties-alphabetical-order": true, //style按照字母順序排列
     },
     customSyntax: 'postcss-html',
     overrides: [

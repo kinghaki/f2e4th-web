@@ -13,7 +13,7 @@
 
 .animation-parallax {
   /* 持续时间 */
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: parallax;
@@ -34,7 +34,7 @@
 
 .animation-canvas {
   /* 持续时间 */
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: canvas;
@@ -55,7 +55,7 @@
 
 .animation-draggable {
   /* 持续时间 */
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: parallax;
@@ -132,7 +132,7 @@
 
 @keyframes lefttop {
   0% {
-    transform: translate(0, -100%);
+    transform: translate(-50%, -50%);
     visibility: visible;
   }
 
