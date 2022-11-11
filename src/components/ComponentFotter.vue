@@ -36,7 +36,6 @@ export default defineComponent({
     align-items: center;
     background: #fff;
     display: flex;
-    height: 96px;
     justify-content: space-evenly;
 
     @include rwd(padpc) {
@@ -46,6 +45,21 @@ export default defineComponent({
       height: 150px;
 
       /* justify-content: center; */
+    }
+
+    @include rwd(pad) {
+      align-content: center;
+      display: flex;
+      flex-wrap: wrap;
+
+      /* justify-content: center; */
+    }
+
+    img {
+      @include rwd(pad) {
+        margin-bottom: 60px;
+        margin-top: 60px;
+      }
     }
   }
 

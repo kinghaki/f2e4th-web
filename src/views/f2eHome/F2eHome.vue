@@ -290,6 +290,12 @@ onUnmounted(() => {
       width: 740px;
     }
 
+    @include rwd(pad) {
+      display: block;
+      height: 1164px;
+      width: 375px;
+    }
+
     .main-left {
       padding-left: 56px;
       padding-top: 51px;
@@ -305,8 +311,13 @@ onUnmounted(() => {
           width: 359px;
         }
 
+        @include rwd(pad) {
+          display: flex;
+          justify-content: center;
+          width: 320px;
+        }
+
         .big-title {
-          color: #38241b;
           font-size: 80px;
           font-weight: 800;
           height: 104px;
@@ -317,6 +328,13 @@ onUnmounted(() => {
             font-size: 60px;
             height: 104px;
             width: 320px;
+          }
+
+          @include rwd(pad) {
+            font-size: 40px;
+
+            /* height: 80px; */
+            width: 244px;
           }
         }
 
@@ -345,6 +363,13 @@ onUnmounted(() => {
           height: 104px;
           width: 570px;
         }
+
+        @include rwd(pad) {
+          left: 20px;
+          position: absolute;
+          right: 0;
+          top: 620px;
+        }
       }
 
       .content2 {
@@ -357,6 +382,12 @@ onUnmounted(() => {
 
         @include rwd(padpc) {
           display: none;
+        }
+
+        @include rwd(pad) {
+          left: 50px;
+          position: absolute;
+          top: 800px;
         }
       }
     }
@@ -384,6 +415,16 @@ onUnmounted(() => {
         top: 260px;
         width: 600px;
       }
+
+      @include rwd(pad) {
+        bottom: 0;
+        height: 462px;
+        left: 5px;
+        position: absolute;
+        right: 0;
+        top: -400px;
+        width: 100%;
+      }
     }
 
     .main-right {
@@ -398,10 +439,21 @@ onUnmounted(() => {
           right: -30px;
           top: -30px;
         }
+
+        @include rwd(pad) {
+          position: absolute;
+          right: 0;
+          top: 150px;
+          width: 212px;
+        }
       }
 
       .people {
         @include rwd(padpc) {
+          display: none;
+        }
+
+        @include rwd(pad) {
           display: none;
         }
 

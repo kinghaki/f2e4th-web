@@ -23,6 +23,9 @@ export default defineComponent({
 </script>
 
 <style scoped lang='scss'>
+/* stylelint-disable-next-line import-notation */
+@import "@/styles/scss/rwd";
+
 #component-header {
   align-items: center;
   background: #38241b;
@@ -47,10 +50,14 @@ export default defineComponent({
     justify-content: space-between;
     width: 322px;
 
+    @include rwd(pad) {
+      align-items: center;
+      width: 200px;
+    }
+
     .stage {
       background-color: #38241b;
       font-size: 18px;
-      height: 26px;
       line-height: 26px;
       width: 72px;
     }
@@ -58,7 +65,6 @@ export default defineComponent({
     .caption {
       background-color: #38241b;
       font-size: 18px;
-      height: 26px;
       line-height: 26px;
       width: 72px;
     }

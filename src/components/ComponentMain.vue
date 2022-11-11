@@ -15,7 +15,7 @@
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group 17.png" alt="">
+          <img src="@/assets/ComponentMain/Group 17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>The F2E 活動網站設計</h3>
@@ -41,7 +41,7 @@
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group 17.png" alt="">
+          <img src="@/assets/ComponentMain/Group 17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>今晚，我想來點點簽</h3>
@@ -67,7 +67,7 @@
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Rectangle (1).png" alt="">
+          <img src="@/assets/ComponentMain/Rectangle (1).png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>Scrum 新手村</h3>
@@ -331,6 +331,11 @@ onMounted(() => {
       height: 98px;
       width: 315px;
     }
+
+    @include rwd(pad) {
+      height: 98px;
+      width: 90%;
+    }
   }
 
   .content {
@@ -344,6 +349,11 @@ onMounted(() => {
     margin-top: 42.17px;
     text-align: center;
     width: 996px;
+
+    @include rwd(pad) {
+      height: 200px;
+      width: 100%;
+    }
   }
 
   .line {
@@ -373,8 +383,16 @@ onMounted(() => {
       width: 700px;
     }
 
-    img {
+    @include rwd(pad) {
+      width: 343px;
+    }
+
+    .img {
       @include rwd(padpc) {
+        display: none;
+      }
+
+      @include rwd(pad) {
         display: none;
       }
     }
@@ -388,6 +406,14 @@ onMounted(() => {
         font-size: 44px;
         height: 64px;
         width: 684px;
+
+        @include rwd(padpc) {
+          display: none;
+        }
+
+        @include rwd(pad) {
+          display: none;
+        }
       }
     }
 
@@ -396,6 +422,11 @@ onMounted(() => {
       display: flex;
       justify-content: space-around;
       margin: 66px auto;
+
+      @include rwd(pad) {
+        display: block;
+        margin-top: 20px;
+      }
 
       .parallax-right {
         display: flex;
@@ -409,11 +440,24 @@ onMounted(() => {
           justify-content: center;
         }
 
+        @include rwd(pad) {
+          display: block;
+          width: 284px;
+
+          /* line-height: 0px; */
+
+          /* justify-content: center; */
+        }
+
         h3 {
           font-family: "Noto Serif TC";
           font-size: 44px;
           font-weight: 900;
           height: 63px;
+
+          @include rwd(pad) {
+            width: 266px;
+          }
         }
 
         p {
@@ -425,10 +469,21 @@ onMounted(() => {
           letter-spacing: 0;
           line-height: 35px;
           width: 592px;
+
+          @include rwd(pad) {
+            margin-top: 70px;
+            width: 100%;
+          }
         }
 
         .buttons {
           @include rwd(padpc) {
+            margin-top: 89.36px;
+            text-align: center;
+          }
+
+          @include rwd(pad) {
+            display: flex;
             margin-top: 89.36px;
             text-align: center;
           }
@@ -572,6 +627,10 @@ onMounted(() => {
     width: 386px;
 
     @include rwd(padpc) {
+      display: block;
+    }
+
+    @include rwd(pad) {
       display: block;
     }
 
