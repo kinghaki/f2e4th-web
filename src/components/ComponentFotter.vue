@@ -80,6 +80,19 @@ export default defineComponent({
       display: flex;
       justify-content: space-evenly;
       margin-top: 50px;
+
+      @include rwd(padpc) {
+        img {
+          width: 250px;
+        }
+      }
+
+      @include rwd(pad) {
+        align-items: center;
+        flex-direction: column;
+        height: 500px;
+        justify-content: space-around;
+      }
     }
   }
 
