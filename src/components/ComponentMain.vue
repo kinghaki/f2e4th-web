@@ -11,11 +11,11 @@
         <h2 class="text">
           視差滾動  Parallax Scrolling
         </h2>
-        <img src="@/assets/ComponentMain/fb11 1.png" alt="">
+        <img src="@/assets/ComponentMain/fb11-1.png" alt="">
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group 17.png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Group-17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>The F2E 活動網站設計</h3>
@@ -37,11 +37,11 @@
         <h2 class="text">
           線上簽署 Canvas
         </h2>
-        <img src="@/assets/ComponentMain/kdan_logoA_4c_RGB 1.png" alt="">
+        <img src="@/assets/ComponentMain/kdan_logoA_4c_RGB-1.png" alt="">
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group 17.png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Group-17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>今晚，我想來點點簽</h3>
@@ -67,7 +67,7 @@
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Rectangle (1).png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Rectangle-1.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>Scrum 新手村</h3>
@@ -87,65 +87,68 @@
     <h2 class="race-time">
       賽程時間
     </h2>
-    <div class="race-detail">
-      <div class="line"></div>
-      <div class="begin-signup race">
-        <span class="title">開始報名</span>
-        <span class="rectangle"></span>
-        <p>
-          10/13(四) 早上 11:00
-          至 11/6(日) 晚上 23:59
-        </p>
+    <div class="whole-race">
+      <div class="race-detail">
+        <div class="line"></div>
+        <div class="begin-signup race">
+          <span class="title">開始報名</span>
+          <span class="rectangle"></span>
+          <p>
+            10/13(四) 早上 11:00
+            至 11/6(日) 晚上 23:59
+          </p>
+        </div>
+        <div class="race-start race">
+          <span class="title">開賽</span>
+          <span class="rectangle"></span>
+          <p>
+            UI組、團體組開賽 10/31
+            前端組開賽 11 /7
+          </p>
+        </div>
+        <div class="upload-project race">
+          <span class="title">登陸作品</span>
+          <span class="rectangle"></span>
+          <p>
+            10/31(一) 中午 12:00
+            至11/28(一) 中午 12:00
+          </p>
+        </div>
+        <div class="race-live race">
+          <span class="title">線上直播</span>
+          <span class="rectangle"></span>
+          <p>
+            11/3 至 11/24(每週四)
+          </p>
+        </div>
       </div>
-      <div class="race-start race">
-        <span class="title">開賽</span>
-        <span class="rectangle"></span>
-        <p>
-          UI組、團體組開賽 10/31
-          前端組開賽 11 /7
-        </p>
+      <div class="record">
+        <div class="record-first">
+          <span>初選</span>
+          <span class="rectangle"></span>
+          <p>
+            12/05(五)
+          </p>
+        </div>
+        <div class="record-last">
+          <span>決選</span>
+          <span class="rectangle"></span>
+          <p>
+            12/05(五)
+          </p>
+        </div>
       </div>
-      <div class="upload-project race">
-        <span class="title">登陸作品</span>
-        <span class="rectangle"></span>
-        <p>
-          10/31(一) 中午 12:00
-          至11/28(一) 中午 12:00
+      <section class="sections">
+        <p class="first">
+          初選：將由六角學院前端、UI 評審進行第一波篩選，並於 12/5（五）公布初選佳作名單
+          。
         </p>
-      </div>
-      <div class="race-live race">
-        <span class="title">線上直播</span>
-        <span class="rectangle"></span>
-        <p>
-          11/3 至 11/24(每週四)
+        <p class="second">
+          決選：由三大企業針對該企業主題進行入圍獎最後篩選，並於 12/23（五）公布企業得獎名單。
         </p>
-      </div>
+      </section>
     </div>
-    <div class="record">
-      <div class="record-first">
-        <span>初選</span>
-        <span class="rectangle"></span>
-        <p>
-          12/05(五)
-        </p>
-      </div>
-      <div class="record-last">
-        <span>決選</span>
-        <span class="rectangle"></span>
-        <p>
-          12/05(五)
-        </p>
-      </div>
-    </div>
-    <section class="sections">
-      <p class="first">
-        初選：將由六角學院前端、UI 評審進行第一波篩選，並於 12/5（五）公布初選佳作名單
-        。
-      </p>
-      <p class="second">
-        決選：由三大企業針對該企業主題進行入圍獎最後篩選，並於 12/23（五）公布企業得獎名單。
-      </p>
-    </section>
+
     <h2 class="prize">
       獎項
     </h2>
@@ -523,45 +526,84 @@ onMounted(() => {
     width: 100vw;
   }
 
-  .race-detail {
+  .whole-race {
+    background-color: tan;
     display: flex;
-    justify-content: space-around;
-    margin-top: 92px;
+    flex-direction: column;
 
-    .line {
-      border: 5px solid #3c221b;
-      bottom: 30px;
-      left: 300px;
-      position: absolute;
-    }
+    /* overflow-x: scroll; */
 
-    .begin-signup {
-      /* background-color: darkblue; */
-      width: 238px;
-    }
+    /* width: 400px; */
 
-    .race-start {
-      width: 261px;
-    }
-
-    .upload-project {
-      width: 246px;
-    }
-
-    .race-live {
-      width: 235px;
-    }
-
-    .race {
-      align-items: center;
+    .race-detail {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-around;
+      margin-top: 92px;
 
-      .title {
-        color: #38241b;
-        font-size: 30px;
-        font-weight: 400;
+      .line {
+        border: 5px solid #3c221b;
+        bottom: 30px;
+        left: 300px;
+        position: absolute;
+      }
+
+      .begin-signup {
+        /* background-color: darkblue; */
+        width: 238px;
+      }
+
+      .race-start {
+        width: 261px;
+      }
+
+      .upload-project {
+        width: 246px;
+      }
+
+      .race-live {
+        width: 235px;
+      }
+
+      .race {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title {
+          color: #38241b;
+          font-size: 30px;
+          font-weight: 400;
+        }
+
+        .rectangle {
+          background-color: #3c221b;
+          height: 48.53px;
+          margin-top: 20px;
+          transform: rotate(45deg);
+          width: 48.53px;
+        }
+
+        p {
+          margin-top: 32.27px;
+        }
+      }
+    }
+
+    .record {
+      display: flex;
+      margin-top: 92px;
+
+      .record-first {
+        display: flex;
+        flex-direction: column;
+        width: 103px;
+      }
+
+      .record-last {
+        display: flex;
+        flex-direction: column;
+        width: 103px;
       }
 
       .rectangle {
@@ -571,40 +613,11 @@ onMounted(() => {
         transform: rotate(45deg);
         width: 48.53px;
       }
-
-      p {
-        margin-top: 32.27px;
-      }
-    }
-  }
-
-  .record {
-    display: flex;
-    margin-top: 92px;
-
-    .record-first {
-      display: flex;
-      flex-direction: column;
-      width: 103px;
     }
 
-    .record-last {
-      display: flex;
-      flex-direction: column;
-      width: 103px;
+    .sections {
+      margin-top: 44px;
     }
-
-    .rectangle {
-      background-color: #3c221b;
-      height: 48.53px;
-      margin-top: 20px;
-      transform: rotate(45deg);
-      width: 48.53px;
-    }
-  }
-
-  .sections {
-    margin-top: 44px;
   }
 
   .prize {

@@ -1,5 +1,15 @@
 <template>
   <div id="f2e-home" ref="home" :style="bGHome">
+    <div ref="loading" class="loading" :style="bgMainss">
+      <div class="containers">
+        <div class="imgs">
+          <div ref="containers" class="container"></div>
+        </div>
+        <div class="hard">
+          努力加載中...
+        </div>
+      </div>
+    </div>
     <!-- <div ref="container" class="magic"></div> -->
     <img
       ref="container" src="@/assets/cursor.svg" alt=""
@@ -88,6 +98,7 @@ import bgPeoples from '@/assets/home/people.png';
 import lottie from 'lottie-web';
 import click from '@/assets/魔杖_loading.json';
 import scrollDown from '@/assets/scroll_down.json';
+import bgMains from '@/assets/ComponentMain/main-bg.png';
 
 export default defineComponent({
   name: 'F2eHome'
@@ -99,6 +110,14 @@ import ComponentMain from '@/components/ComponentMain.vue';
 import ComponentFotter from '@/components/ComponentFotter.vue';
 import ComponentPeople from '@/components/ComponentPeople.vue';
 import gsap from 'gsap';
+const bgMainss = ref<CSSProperties>({
+  backgroundSize: 'cover',
+  // backgroundImage: `url(require("${bgBusHome}"))`, // require 是 webpack用 require 處理 image 的語法
+  backgroundImage: `url("${bgMains}")`, // vite 是用 rollup 打包，不需使用 webapck 的 require
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'bottom',
+  objectFit: 'cover'
+});
 
 const bGHome = ref<CSSProperties>({
   backgroundSize: 'cover',
@@ -139,6 +158,8 @@ const paper = ref<HTMLElement | null>(null);
 const scrollDownElement = ref<HTMLElement | null>(null);
 const home = ref<HTMLElement | null>(null);
 const container = ref<HTMLElement | null>(null);
+const containers = ref<HTMLElement | null>(null);
+const loading = ref<HTMLElement | null>(null);
 const mouseMove = (e: MouseEvent) => {
   // console.log(e.clientX);
   // console.log(container.value?.style.left);
@@ -151,6 +172,12 @@ const mouseMove = (e: MouseEvent) => {
   }
 };
 onMounted(() => {
+  setTimeout(() => {
+    if (loading.value) {
+      loading.value.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }, 5000);
   // console.log(window.);
   // window.addEventListener('scroll', (event: Event) => {
   //   console.log(paper.value?.offsetLeft);
@@ -159,6 +186,14 @@ onMounted(() => {
     container: container.value as HTMLElement,
     renderer: 'svg',
     loop: 0,
+    autoplay: true,
+    animationData: click
+  });
+
+  lottie.loadAnimation({
+    container: containers.value as HTMLElement,
+    renderer: 'svg',
+    loop: true,
     autoplay: true,
     animationData: click
   });
@@ -193,10 +228,6 @@ onMounted(() => {
     autoplay: true,
     animationData: scrollDown
   });
-  // gsap.to('.paper', {
-  //   duration: 1.5,
-  //   x: 100
-  // });
 });
 onUnmounted(() => {
   // window.removeEventListener('scroll', () => {
@@ -211,7 +242,7 @@ onUnmounted(() => {
 @import "@/styles/scss/rwd";
 
 #f2e-home {
-  /* height: 720px; */  // 報紙變模糊了
+  /* height: 720px;  // 報紙變模糊了 */
   position: relative;
 
   /* position: fixed; */
@@ -231,6 +262,40 @@ onUnmounted(() => {
     position: fixed;
     top: 0;
     z-index: 1;
+  }
+
+  .loading {
+    height: 100vh;
+    position: fixed;
+    width: 100vw;
+    z-index: 10000;
+
+    .containers {
+      margin: 0 auto;
+
+      .imgs {
+        height: 200px;
+        margin: 200px auto 0;
+        width: 200px;
+
+        .container {
+          height: 200px;
+          width: 200px;
+        }
+      }
+
+      .hard {
+        font-family: "AR JULIAN";
+        font-size: 23px;
+        font-weight: 5;
+        height: 26px;
+        letter-spacing: 0;
+        line-height: 26px;
+        margin: 0 auto;
+        text-align: center;
+        width: 160px;
+      }
+    }
   }
 
   .paper {

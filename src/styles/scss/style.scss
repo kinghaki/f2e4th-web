@@ -2,3 +2,8 @@
 .hidden {
   visibility: hidden;
 }
+
+body {
+  cursor: none; // 讓滑鼠不見
+  overflow: hidden; // 一開始載入的時候不能讓他滑動
+}

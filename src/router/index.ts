@@ -6,7 +6,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: () => import('@/views/f2eHome/F2eHome.vue')
   },
-
   // {
   //   path: '/event/:id',
   //   name: 'EventDetail',

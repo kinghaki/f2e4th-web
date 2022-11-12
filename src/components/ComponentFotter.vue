@@ -1,16 +1,16 @@
 <template>
   <div id="component-fotter">
     <div class="companys">
-      <img src="@/assets/ComponetFotter/jira 1.png" alt="">
-      <img src="@/assets/ComponetFotter/點點簽 1.png" alt="">
-      <img src="@/assets/ComponetFotter/image 8.png" alt="">
-      <img src="@/assets/ComponetFotter/image 9.png" alt="">
+      <img src="@/assets/ComponetFotter/jira-1.png" alt="">
+      <img src="@/assets/ComponetFotter/dot-1.png" alt="">
+      <img src="@/assets/ComponetFotter/image-8.png" alt="">
+      <img src="@/assets/ComponetFotter/image-9.png" alt="">
     </div>
     <div class="footer">
       <h4>贊助單位</h4>
       <div class="works">
-        <img src="@/assets/ComponentMain/fb11 1.png" alt="">
-        <img src="@/assets/ComponentMain/kdan_logoA_4c_RGB 1.png" alt="">
+        <img src="@/assets/ComponentMain/fb11-1.png" alt="">
+        <img src="@/assets/ComponentMain/kdan_logoA_4c_RGB-1.png" alt="">
         <img src="@/assets/ComponentMain/three.png" alt="">
       </div>
       <div class="copyright">
