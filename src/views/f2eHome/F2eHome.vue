@@ -174,11 +174,12 @@ const mouseMove = (e: MouseEvent) => {
 };
 onMounted(() => {
   setTimeout(() => {
+    // 頁面載入3秒
     if (loading.value) {
       loading.value.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
-  }, 0);
+  }, 3000);
   // console.log(window.);
   // window.addEventListener('scroll', (event: Event) => {
   //   console.log(paper.value?.offsetLeft);
