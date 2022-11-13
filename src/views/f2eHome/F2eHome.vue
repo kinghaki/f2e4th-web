@@ -1,92 +1,94 @@
 <template>
-  <div id="f2e-home" ref="home" :style="bGHome">
-    <div ref="loading" class="loading" :style="bgMainss">
-      <div class="containers">
-        <div class="imgs">
-          <div ref="containers" class="container"></div>
-        </div>
-        <div class="hard">
-          努力加載中...
-        </div>
-      </div>
-    </div>
-    <!-- <div ref="container" class="magic"></div> -->
-    <img
-      ref="container" src="@/assets/cursor.svg" alt=""
-      class="magic"
-    >
-    <img src="@/assets/star.svg" alt="" class="star">
-    <div ref="paper" class="paper">
-      <!-- <img
-        ref="paperTop" src="@/assets/home/paper-top.png" alt=""
-        class="top"
-      >
-      <img
-        ref="paperLeft" src="@/assets/home/paper-left.png" alt=""
-        class="left"
-      >
-      <img
-        ref="paperRight" src="@/assets/home/paper-right.png" alt=""
-        class="right"
-      > -->
-
-      <!-- <div ref="scrollDownElement" class="scroll-down">
-        .
-      </div> -->
-    </div>
-    <ComponentHeader></ComponentHeader>
-    <div class="home-main" :style="bgMainHome">
-      <div class="main-left">
-        <div class="title">
-          <h2 class="big-title">
-            THE F2E
-          </h2>
-          <div class="little-title">
-            4th
+  <div class="out-container">
+    <div id="f2e-home" ref="home" :style="bGHome">
+      <div ref="loading" class="loading" :style="bgMainss">
+        <div class="containers">
+          <div class="imgs">
+            <div ref="containers" class="container"></div>
+          </div>
+          <div class="hard">
+            努力加載中...
           </div>
         </div>
-        <p class="content1">
-          前端工程師和介面設計師，攜手合作拿獎金
-        </p>
-        <div class="content2">
-          羨慕別人的酷酷網頁動畫？
-          滿足不了同事的許願？
-          動畫技能樹太雜無從下手？
+      </div>
+      <!-- <div ref="container" class="magic"></div> -->
+      <img
+        ref="container" src="@/assets/cursor.svg" alt=""
+        class="magic"
+      >
+      <img src="@/assets/star.svg" alt="" class="star">
+      <div ref="paper" class="paper">
+        <img
+          ref="paperTop" src="@/assets/home/paper-top.png" alt=""
+          class="top"
+        >
+        <img
+          ref="paperLeft" src="@/assets/home/paper-left.png" alt=""
+          class="left"
+        >
+        <img
+          ref="paperRight" src="@/assets/home/paper-right.png" alt=""
+          class="right"
+        >
+
+        <div ref="scrollDownElement" class="scroll-down">
+          .
         </div>
       </div>
-      <div class="home-people" :style="bgPeople"></div>
-      <div class="main-right">
-        <img src="@/assets/home/bounty.png" alt="" class="bounty-img">
-        <ul class="people">
-          <li>
-            <span class="people-order">報名總人數</span>
-            <span class="person">1158人</span>
-          </li>
-          <li>
-            <span class="people-order">
-              個人賽人數
-            </span>
-            <span class="person">
-              1052人
-            </span>
-          </li>
-          <li>
-            <span class="people-order">
-              團體賽人數
-            </span>
-            <span class="person">
-              41人
-            </span>
-          </li>
-        </ul>
+      <ComponentHeader></ComponentHeader>
+      <div class="home-main" :style="bgMainHome">
+        <div class="main-left">
+          <div class="title">
+            <h2 class="big-title">
+              THE F2E
+            </h2>
+            <div class="little-title">
+              4th
+            </div>
+          </div>
+          <p class="content1">
+            前端工程師和介面設計師，攜手合作拿獎金
+          </p>
+          <div class="content2">
+            羨慕別人的酷酷網頁動畫？
+            滿足不了同事的許願？
+            動畫技能樹太雜無從下手？
+          </div>
+        </div>
+        <div class="home-people" :style="bgPeople"></div>
+        <div class="main-right">
+          <img src="@/assets/home/bounty.png" alt="" class="bounty-img">
+          <ul class="people">
+            <li>
+              <span class="people-order">報名總人數</span>
+              <span class="person">1158人</span>
+            </li>
+            <li>
+              <span class="people-order">
+                個人賽人數
+              </span>
+              <span class="person">
+                1052人
+              </span>
+            </li>
+            <li>
+              <span class="people-order">
+                團體賽人數
+              </span>
+              <span class="person">
+                41人
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <ComponentMain @live-share="trigger"></ComponentMain>
-    <template v-if="isPeople">
-      <ComponentPeople></ComponentPeople>
-    </template>
+      <ComponentMain @live-share="trigger"></ComponentMain>
+      <template v-if="isPeople">
+        <ComponentPeople></ComponentPeople>
+      </template>
 
-    <componentFotter></componentFotter>
+      <componentFotter></componentFotter>
+    </div>
   </div>
 </template>
 
@@ -147,7 +149,6 @@ const bgPeople = ref<CSSProperties>({
 
 const isPeople = ref(false);
 const trigger = (flag = false) => {
-  console.log(123);
   isPeople.value = flag;
 };
 
@@ -177,7 +178,7 @@ onMounted(() => {
       loading.value.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
-  }, 5000);
+  }, 0);
   // console.log(window.);
   // window.addEventListener('scroll', (event: Event) => {
   //   console.log(paper.value?.offsetLeft);
@@ -203,20 +204,28 @@ onMounted(() => {
       console.log(paperTop.value.style.top.replace('px', ''));
       console.log(window.scrollY);
       const top = Number(paperTop.value.style.top.replace('px', ''));
-      const movePx = top + window.scrollY;
+      const movePx = top + window.scrollY * 10;
       console.log('topmovepx', movePx);
       paperTop.value.style.top = `${-movePx}px`;
     }
     if (paperLeft.value) {
       console.log(paperLeft.value.style.top);
       const bottom = Number(paperLeft.value.style.bottom.replace('px', ''));
-      const movePx = bottom + window.scrollY;
+      const movePx = bottom + window.scrollY * 10;
       paperLeft.value.style.top = `${movePx}px`;
     }
     if (paperRight.value) {
       const bottom = Number(paperRight.value.style.bottom.replace('px', ''));
-      const movePx = bottom + window.scrollY;
+      const movePx = bottom + window.scrollY * 10;
       paperRight.value.style.top = `${movePx}px`;
+    }
+
+    if (scrollDownElement.value) {
+      if (window.scrollY > 10) {
+        scrollDownElement.value.style.display = 'none';
+      } else {
+        scrollDownElement.value.style.display = 'block';
+      }
     }
   }, true);
 

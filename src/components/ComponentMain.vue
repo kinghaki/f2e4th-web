@@ -11,11 +11,11 @@
         <h2 class="text">
           視差滾動  Parallax Scrolling
         </h2>
-        <img src="@/assets/ComponentMain/fb11-1.png" alt="">
+        <img src="@/assets/ComponentMain/fb111.png" alt="">
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group-17.png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Group17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>The F2E 活動網站設計</h3>
@@ -37,11 +37,11 @@
         <h2 class="text">
           線上簽署 Canvas
         </h2>
-        <img src="@/assets/ComponentMain/kdan_logoA_4c_RGB-1.png" alt="">
+        <img src="@/assets/ComponentMain/kdan.png" alt="">
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Group-17.png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Group17.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>今晚，我想來點點簽</h3>
@@ -67,7 +67,7 @@
       </div>
       <div class="main">
         <div class="parallax-left">
-          <img src="@/assets/ComponentMain/Rectangle-1.png" alt="" class="img">
+          <img src="@/assets/ComponentMain/Rectangle1.png" alt="" class="img">
         </div>
         <div class="parallax-right">
           <h3>Scrum 新手村</h3>
@@ -89,10 +89,13 @@
     </h2>
     <div class="whole-race">
       <div class="race-detail">
-        <div class="line"></div>
+        <div class="lines"></div>
         <div class="begin-signup race">
           <span class="title">開始報名</span>
-          <span class="rectangle"></span>
+          <span
+            class="rectangle"
+            :style="new Date() >= new Date('2022-10-13 11:00:00') && new Date() <= new Date('2022-11-06 23:59:59') ? styleObj : styleObj2"
+          ></span>
           <p>
             10/13(四) 早上 11:00
             至 11/6(日) 晚上 23:59
@@ -108,31 +111,44 @@
         </div>
         <div class="upload-project race">
           <span class="title">登陸作品</span>
-          <span class="rectangle"></span>
+          <span
+            class="rectangle"
+            :style="new Date() >= new Date('2022-10-31 12:00:00') && new Date() <= new Date('2022-11-28 12:00:00') ? styleObj : styleObj2"
+          ></span>
           <p>
             10/31(一) 中午 12:00
             至11/28(一) 中午 12:00
           </p>
         </div>
-        <div class="race-live race">
+        <div class="race-live race races">
           <span class="title">線上直播</span>
-          <span class="rectangle"></span>
+          <span
+            class="rectangle"
+            :style="new Date() >= new Date('2022-11-03 00:00:00') && new Date() <= new Date('2022-11-24 00:00:00') ? styleObj : styleObj2"
+          ></span>
           <p>
             11/3 至 11/24(每週四)
           </p>
         </div>
       </div>
       <div class="record">
+        <div class="lines"></div>
         <div class="record-first">
-          <span>初選</span>
-          <span class="rectangle"></span>
+          <span class="first">初選</span>
+          <span
+            class="rectangle"
+            :style="new Date().getMonth() + 1 === 12 && new Date().getDate() === 5 ? styleObj : styleObj2"
+          ></span>
           <p>
             12/05(五)
           </p>
         </div>
         <div class="record-last">
-          <span>決選</span>
-          <span class="rectangle"></span>
+          <span class="final">決選</span>
+          <span
+            class="rectangle"
+            :style="new Date().getMonth() + 1 === 12 && new Date().getDate() === 5 ? styleObj : styleObj2"
+          ></span>
           <p>
             12/05(五)
           </p>
@@ -191,7 +207,7 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, ref, CSSProperties, onMounted } from 'vue';
+import { defineComponent, ref, CSSProperties, onMounted, computed } from 'vue';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import lottie from 'lottie-web';
@@ -208,6 +224,13 @@ const emit = defineEmits(['live-share']);
 const isAccident = ref(true);
 const closeAccident = () => {
   isAccident.value = false;
+};
+
+const styleObj = {
+  backgroundColor: '#951205'
+};
+const styleObj2 = {
+  backgroundColor: '#3C221B'
 };
 
 const bGComponentMain = ref<CSSProperties>({
@@ -285,6 +308,7 @@ onMounted(() => {
       }
     }
   });
+
 //   gsap.to('.parallax', {
 //     x: 600,
 //     duration: 3,
@@ -527,48 +551,64 @@ onMounted(() => {
   }
 
   .whole-race {
-    background-color: tan;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    overflow-x: auto;
+    width: 900px;
 
-    /* overflow-x: scroll; */
+    @include rwd(padpc) {
+      width: 700px;
+    }
 
-    /* width: 400px; */
+    @include rwd(pad) {
+      display: block;
+      width: 425px;
+
+      /* line-height: 0px; */
+
+      /* justify-content: center; */
+    }
 
     .race-detail {
+      /* background: yellow; */
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       margin-top: 92px;
+      position: relative;
 
-      .line {
-        border: 5px solid #3c221b;
-        bottom: 30px;
-        left: 300px;
+      .lines {
+        border: 2px solid #38241b;
+        height: 0;
+        margin-top: 2px;
         position: absolute;
-      }
+        top: 69px;
+        width: 100%;
 
-      .begin-signup {
-        /* background-color: darkblue; */
-        width: 238px;
-      }
+        @include rwd(padpc) {
+          display: none;
+        }
 
-      .race-start {
-        width: 261px;
-      }
-
-      .upload-project {
-        width: 246px;
-      }
-
-      .race-live {
-        width: 235px;
+        @include rwd(pad) {
+          display: none;
+        }
       }
 
       .race {
         align-items: center;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
+
+        @include rwd(padpc) {
+          width: 200px;
+        }
+
+        @include rwd(pad) {
+          width: 150px;
+        }
+
+        &.races {
+          align-items: center;
+        }
 
         .title {
           color: #38241b;
@@ -591,19 +631,62 @@ onMounted(() => {
     }
 
     .record {
+      /* background-color: yellow; */
+
+      /* background-color: rosybrown; */
       display: flex;
-      margin-top: 92px;
+      justify-content: space-between;
+      margin: 92px auto 0;
+      position: relative;
+
+      /* text-align: center; */
+      width: 500px;
+
+      .lines {
+        border: 2px solid #38241b;
+        height: 0;
+        margin-top: 2px;
+        position: absolute;
+        top: 69px;
+        width: 100%;
+
+        @include rwd(padpc) {
+          display: none;
+        }
+
+        @include rwd(pad) {
+          display: none;
+        }
+      }
 
       .record-first {
+        align-items: flex-start;
         display: flex;
         flex-direction: column;
         width: 103px;
+
+        .first {
+          font-size: 30px;
+        }
+
+        p {
+          margin-top: 30px;
+        }
       }
 
       .record-last {
+        align-items: flex-end;
         display: flex;
         flex-direction: column;
         width: 103px;
+
+        .final {
+          font-size: 30px;
+        }
+
+        p {
+          margin-top: 30px;
+        }
       }
 
       .rectangle {
@@ -616,7 +699,13 @@ onMounted(() => {
     }
 
     .sections {
+      font-family: "Noto Sans TC";
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 41px;
       margin-top: 44px;
+      text-align: left;
     }
   }
 
